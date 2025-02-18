@@ -34,7 +34,7 @@ class mask:
                         
                         contour = contour.reshape(-1, 1, 2)
                         
-                        b_mask = cv2.drawContours(b_mask, [contour], -1, (0, 255, 0, 0), cv2.FILLED)
+                        b_mask = cv2.fillPoly(b_mask, [contour], (0, 255, 0))
                     else:
                         continue
                 except:
