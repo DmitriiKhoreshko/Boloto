@@ -26,4 +26,4 @@ if uploaded_file is not None:
     im_pil = Image.fromarray(ready_image)
     st.image(im_pil, caption="Обработанное изображение", use_container_width=True) 
     st.image(mask1, caption="Обработанное изображение", use_container_width=True)
-    st.image(result[0].plot(boxes=false), caption="Обработанное изображение", use_container_width=True)
+    st.image(result[0].plot(boxes=False), caption="Обработанное изображение", use_container_width=True)
