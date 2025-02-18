@@ -38,7 +38,6 @@ if uploaded_files:
     # Отображаем выбранное изображение, если оно есть  
     if st.session_state.selected_image:  
         st.subheader("Выбранное изображение:")  
-<<<<<<< HEAD
         
         st.image(st.session_state.selected_image, caption="Выбранное изображение", use_container_width=True)  
         
@@ -46,7 +45,6 @@ if uploaded_files:
         
         model_path = "runs/segment/XL_Original_300_epochs/weights/best.pt"  # Примечание: Замените на корректный путь  
         model = YOLO(model_path)  # Загружаем модель  
-=======
         
         st.image(st.session_state.selected_image, caption="Выбранное изображение", use_container_width=True)  
         
@@ -58,8 +56,6 @@ if uploaded_files:
         # Если обработанные изображения еще не загружены, генерируем их    
         confidence_levels = [0, 0.0001, 0.0002, 0.0003, 0.0004, 0.0005, 0.0006]  # Уровни уверенности  
             
-         
->>>>>>> d2d12795a91e3afdf802881758b207e60deb1ac9
 
         # Если обработанные изображения еще не загружены, генерируем их    
         
@@ -70,7 +66,6 @@ if uploaded_files:
             i+=0.0001
             confidence_levels.append(i)
         # Слайдер для выбора уровня уверенности  
-<<<<<<< HEAD
         slider_value = st.slider("Precision level:", 1, len(confidence_levels), 1)  
         
         res=mask()
@@ -80,7 +75,7 @@ if uploaded_files:
         ready_image=res.mask_image(prediction["mask"],prediction["image"],0.5,100)
         
         st.image(ready_image, caption="Обработанное изображение", use_container_width=True)  # Обратите внимание на метод plot()  
-=======
+
         slider_value = st.slider("Выберите уровень уверенности:",   
                                  1, len(confidence_levels), 1)  
         
@@ -90,7 +85,6 @@ if uploaded_files:
         # # Отображаем первое предсказанное изображение  
         st.write(result[0].masks)
         #st.image(result[0].save(boxes=False), caption="Обработанное изображение", use_container_width=True)  # Обратите внимание на метод plot() 
->>>>>>> d2d12795a91e3afdf802881758b207e60deb1ac9
 
 else:  
     st.warning("Пожалуйста, загрузите хотя бы одно изображение.")
