@@ -10,12 +10,12 @@ from PIL import Image
 
 class mask:
     def get_mask_n_image(self, model_path , image, conf):
-        
+        """Получаем на выход маску и оригинальное изображение, прогнанн"""
         model = YOLO(model_path)
         
         result = model.predict(image, show_boxes=False, imgsz=832, iou=1, conf=conf, max_det=1000)
         
-        return {"mask":result[0].masks.xy, "image": np.copy(image),'res':result[0]}
+        return {"mask":result[0].masks.xy,'res':result[0]}
 
     def mask_image(self, masks, image, transparensy,trash):  
             
