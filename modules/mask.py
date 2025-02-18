@@ -13,11 +13,9 @@ class mask:
         
         model = YOLO(model_path)
         
-        result = model.predict(image, show_boxes=False, imgsz=832, iou=1, conf=conf, max_det=100)
+        result = model.predict(image, show_boxes=False, imgsz=832, iou=1, conf=conf, max_det=1000)
         
-        print("Тут я уже")
-        
-        return {"mask":result[0].masks.xy, "image": np.copy(image)}
+        return {"mask":result[0].masks.xy, "image": np.copy(image),'res':result[0]}
 
     def mask_image(self, masks, image, transparensy,trash):  
             
