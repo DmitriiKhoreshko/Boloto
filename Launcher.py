@@ -26,6 +26,6 @@ if uploaded_file is not None:
 
     prediction=res.get_mask_n_image("./best.pt",opencv_image,0)
 
-    ready_image=res.mask_image(prediction["mask"],prediction["image"],0.5,100)
+    ready_image=res.mask_image(prediction["mask"],opencv_image,0.5,100)
 
     st.image(ready_image, caption="Обработанное изображение", use_container_width=True)  # Обратите внимание на метод plot()  
