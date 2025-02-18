@@ -16,6 +16,9 @@ uploaded_file = st.file_uploader("Выберите изображения", type
     
     
 if uploaded_file is not None:
+    st.write(type(uploaded_file))
+    
+    
     # Convert the file to an opencv image.
     file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
     opencv_image = cv2.imdecode(file_bytes, 1)
