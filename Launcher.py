@@ -42,13 +42,7 @@ if uploaded_files:
         st.image(st.session_state.selected_image, caption="Выбранное изображение", use_container_width=True)  
         
         st.subheader("Обработанное изображение:")   
-        
-        model_path = "runs/segment/XL_Original_300_epochs/weights/best.pt"  # Примечание: Замените на корректный путь  
-        model = YOLO(model_path)  # Загружаем модель  
-        
-        st.image(st.session_state.selected_image, caption="Выбранное изображение", use_container_width=True)  
-        
-        st.subheader("Обработанное изображение:")   
+ 
         
         model_path = "./best.pt"  # Примечание: Замените на корректный путь  
         model = YOLO(model_path)  # Загружаем модель  
@@ -70,7 +64,7 @@ if uploaded_files:
         
         res=mask()
         
-        prediction=res.get_mask_n_image("./best.pt",st.session_state.selected_image,0)
+        prediction=res.get_mask_n_image(model_path,st.session_state.selected_image,0)
         
         ready_image=res.mask_image(prediction["mask"],prediction["image"],0.5,100)
         
