@@ -24,6 +24,4 @@ if uploaded_file is not None:
 
     ready_image,mask1=res.get_mask_n_masked_im(maskarray,np.copy(opencv_image),0.5,100)
     im_pil = Image.fromarray(ready_image)
-    st.image(im_pil, caption="Обработанное изображение", use_container_width=True) 
-    st.image(mask1, caption="Обработанное изображение", use_container_width=True)
     st.image(result[0].plot(boxes=False), caption="Обработанное изображение", use_container_width=True)
