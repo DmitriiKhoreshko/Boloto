@@ -13,7 +13,7 @@ class mask:
         """Получаем на выход маску и оригинальное изображение, прогнанн"""
         model = YOLO(model_path)
         
-        result = model.predict(image, show_boxes=False, imgsz=832, iou=1, conf=conf, max_det=1000)
+        result = model.predict(image, show_boxes=False, imgsz=832, iou=1, conf=conf, max_det=100)
         
         return {"mask":result[0].masks.xy,'res':result[0]}
 
