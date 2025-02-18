@@ -28,4 +28,4 @@ if uploaded_file is not None:
 
     ready_image=res.mask_image(prediction["mask"],prediction["image"],0.5,100)
 
-    st.image(prediction["res"].plot(boxes=False), caption="Обработанное изображение", use_container_width=True)  # Обратите внимание на метод plot()  
+    st.image(ready_image, caption="Обработанное изображение", use_container_width=True)  # Обратите внимание на метод plot()  
