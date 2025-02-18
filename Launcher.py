@@ -13,8 +13,6 @@ st.title("Загрузка и просмотр изображений")
 # Установка конфигурации загрузки изображений  
 uploaded_file = st.file_uploader("Выберите изображения", type=["jpg", "jpeg", "png"], accept_multiple_files=False)  
     
-st.write(type(uploaded_file))
-    
 if uploaded_file is not None:
     # Convert the file to an opencv image.
     file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
