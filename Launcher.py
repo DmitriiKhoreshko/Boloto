@@ -13,12 +13,9 @@ st.title("Загрузка и просмотр изображений")
 # Установка конфигурации загрузки изображений  
 uploaded_file = st.file_uploader("Выберите изображения", type=["jpg", "jpeg", "png"], accept_multiple_files=False)  
     
-    
+st.write(type(uploaded_file))
     
 if uploaded_file is not None:
-    st.write(type(uploaded_file))
-    
-    
     # Convert the file to an opencv image.
     file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
     opencv_image = cv2.imdecode(file_bytes, 1)
@@ -31,4 +28,4 @@ if uploaded_file is not None:
 
     ready_image=res.mask_image(prediction["mask"],prediction["image"],0.5,100)
 
-    st.image(ready_image, caption="Обработанное изображение", use_container_width=True)  # Обратите внимание на метод plot()  
+    st.image(prediction["res"].plot(boxes=False), caption="Обработанное изображение", use_container_width=True)  # Обратите внимание на метод plot()  
