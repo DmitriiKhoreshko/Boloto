@@ -7,14 +7,12 @@ from modules.mask  import *
 
 # Заголовок приложения  
 st.title("Загрузка и просмотр изображений")  
-
-
-
 # Установка конфигурации загрузки изображений  
 uploaded_file = st.file_uploader("Выберите изображения", type=["jpg", "jpeg", "png"], accept_multiple_files=False)  
     
 if uploaded_file is not None:
     # Convert the file to an opencv image.
+    
     file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
     opencv_image = cv2.imdecode(file_bytes, 1)
 
@@ -24,6 +22,6 @@ if uploaded_file is not None:
 
     prediction=res.get_mask_n_image("./best.pt",opencv_image,0)
 
-    ready_image=res.mask_image(prediction["mask"],opencv_image,0.5,100)
-
-    st.image(ready_image, caption="Обработанное изображение", use_container_width=True)  # Обратите внимание на метод plot()  
+    ready_image=res.mask_image(prediction["mask"],np.copy(opencv_image),0.5,100)
+    im_pil = Image.fromarray(ready_image)
+    st.image(im_pil, caption="Обработанное изображение", use_container_width=True)  # Обратите внимание на метод plot()  
