@@ -9,15 +9,15 @@ from PIL import Image
 # model_path = "runs/segment/XL_Original_300_epochs/weights/best.pt"
 
 class mask:
-    def get_mask_n_image(self, model_path , image, conf):
-        """Получаем на выход маску и оригинальное изображение, прогнанн"""
+    def get_mask(self, model_path , image, conf):
+        """Получаем на выход маску"""
         model = YOLO(model_path)
         
         result = model.predict(image, show_boxes=False, imgsz=832, iou=1, conf=conf, max_det=100)
         
-        return {"mask":result[0].masks.xy,'res':result[0]}
+        return {"mask":result[0].masks.xy}
 
-    def mask_image(self, masks, image, transparensy,trash):  
+    def get_mask_n_masked_im(self, masks, image, transparensy,trash):  
             
             transparency = transparensy  # Уровень прозрачности (значение от 0 до 1)  
             alpha_value = int(255 * transparency)
@@ -45,8 +45,7 @@ class mask:
  
             b_mask_rgb = b_mask[:, :, :3]
             isolated = cv2.addWeighted(image, 1, b_mask_rgb, transparency, 0)
-
-            return isolated  
+            return isolated, b_mask_rgb  
         
     def show_image(self,image,key):
         cv2.imshow("image",image)
