@@ -37,6 +37,8 @@ class mask:
                         contour = contour.reshape(-1, 1, 2)
                         
                         b_mask =cv2.bitwise_or(b_mask, cv2.fillPoly(temp, [contour], (0, 255, 0)))
+
+                        st.image(temp, caption="Обработанное изображение", use_container_width=True)
                         
                     else:
                         continue
