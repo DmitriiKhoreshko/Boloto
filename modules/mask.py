@@ -32,7 +32,7 @@ class mask:
                         
                         temp = np.zeros((image.shape[0], image.shape[1], 4), np.uint8) 
                         
-                        contour = contour.reshape(-1, 1, 2)
+                        contour = contour.astype(np.int64).reshape(-1, 1, 2)
                         
                         b_mask =cv2.bitwise_or(b_mask, cv2.drawContours(b_mask, [contour], -1, (0, 255, 0)))
                         print(type(contour))
