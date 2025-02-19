@@ -36,7 +36,7 @@ class mask:
                         
                         contour = contour.reshape(-1, 1, 2)
                         
-                        b_mask =cv2.bitwise_or(b_mask, cv2.fillPoly(temp, [contour], (0, 255, 0)))
+                        b_mask =cv2.bitwise_or(b_mask, cv2.drawContours(b_mask, [contour], -1, (0, 255, 0)))
                         print(contour)
                     else:
                         continue
