@@ -36,7 +36,7 @@ class mask:
                         
                         contour = contour.reshape(-1, 1, 2)
                         
-                        b_mask =cv2.add(b_mask, temp)
+                        b_mask =cv2.add(b_mask, cv2.fillPoly(temp, [contour], (0, 255, 0)))
                         
                     else:
                         continue
