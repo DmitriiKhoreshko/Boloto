@@ -29,7 +29,8 @@ class mask:
                         contour = contour.astype(np.int32)
                         
                         contour = contour.reshape(-1, 1, 2)
-                        
+                        print(contour)
+                        print("Новый")
                         b_mask = cv2.fillPoly(b_mask, [contour], (0, 255, 0))  
                     else:
                         continue
