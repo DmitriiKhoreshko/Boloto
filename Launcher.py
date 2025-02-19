@@ -20,8 +20,9 @@ if uploaded_file is not None:
     # Now do something with the image! For example, let's display it:
     res=mask()
 
-    maskarray,result=res.get_mask("./best.pt",opencv_image,0)
+    maskarray=res.get_mask("./best.pt",opencv_image,0)
 
     ready_image,mask1=res.get_mask_n_masked_im(maskarray,np.copy(opencv_image),0.5,100)
     im_pil = Image.fromarray(ready_image)
-    st.image(result[0].plot(boxes=False), caption="Обработанное изображение", use_container_width=True)
+    st.image(im_pil, caption="Обработанное изображение", use_container_width=True) 
+    st.image(mask1, caption="Обработанное изображение", use_container_width=True)
