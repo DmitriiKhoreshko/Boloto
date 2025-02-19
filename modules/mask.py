@@ -34,7 +34,7 @@ class mask:
                         
                         contour = contour.astype(np.int32).reshape(-1, 1, 2)
                         
-                        b_mask =cv2.bitwise_or(b_mask, cv2.drawContours(b_mask, [contour], -1, (0, 255, 0)))
+                        b_mask =cv2.bitwise_or(b_mask, cv2.drawContours(b_mask, [contour], -1, (0, 255, 0),2))
                         print(type(contour))
                     else:
                         continue
