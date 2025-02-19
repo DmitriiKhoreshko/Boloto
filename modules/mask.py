@@ -21,7 +21,7 @@ class mask:
             
             transparency = transparensy  # Уровень прозрачности (значение от 0 до 1)  
             alpha_value = int(255 * transparency)
-            
+
             b_mask = np.zeros((image.shape[0], image.shape[1], 4), np.uint8) 
 
             for mask in masks:
@@ -36,7 +36,7 @@ class mask:
                         
                         contour = contour.reshape(-1, 1, 2)
                         
-                        b_mask =cv2.bitwise_or(b_mask, cv2.fillPoly(temp, [contour], (0, 255, 0)))
+                        b_mask =cv2.add(b_mask, temp)
                         
                     else:
                         continue
