@@ -19,16 +19,17 @@ class mask:
             alpha_value = int(255 * transparency)
             
             b_mask = np.zeros((image.shape[0], image.shape[1], 4), np.uint8) 
-        
+            print(masks)
             for mask in masks:
                 try:
-                    contour = mask
-
                     if mask.shape[0]>=trash:
                         
-                        contour = contour.astype(np.int32)
+                        contour = mask
                         
+                        contour = contour.astype(int)
+                        abc=contour
                         contour = contour.reshape(-1, 1, 2)
+                        
                         b_mask = cv2.fillPoly(b_mask, [contour], (0, 255, 0))  
                     else:
                         continue
@@ -40,4 +41,4 @@ class mask:
  
             b_mask_rgb = b_mask[:, :, :3]
             isolated = cv2.addWeighted(image, 1, b_mask_rgb, transparency, 0)
-            return isolated, b_mask_rgb, contour
+            return isolated, b_mask_rgb, abc  
