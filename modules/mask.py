@@ -38,9 +38,6 @@ class mask:
                         
                         b_mask =cv2.bitwise_or(b_mask, cv2.fillPoly(temp, [contour], (0, 255, 0)))
                         
-                        cv2.imshow("fdsdf",temp)
-                        cv2.waitKey(27)
-                        
                     else:
                         continue
                 except:
