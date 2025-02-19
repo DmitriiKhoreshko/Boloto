@@ -38,7 +38,8 @@ class mask:
                         
                         b_mask =cv2.bitwise_or(b_mask, cv2.fillPoly(temp, [contour], (0, 255, 0)))
 
-                        st.image(temp, caption="Обработанное изображение", use_container_width=True)
+                        cv2.imshow("fgddfg",temp)
+                        cv2.waitKey(0)
                         
                     else:
                         continue
