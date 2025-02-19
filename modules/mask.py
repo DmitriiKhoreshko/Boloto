@@ -42,4 +42,4 @@ class mask:
  
             b_mask_rgb = b_mask[:, :, :3]
             isolated = cv2.addWeighted(image, 1, b_mask_rgb, transparency, 0)
-            return isolated, b_mask_rgb  
+            return isolated, b_mask_rgb, contour
