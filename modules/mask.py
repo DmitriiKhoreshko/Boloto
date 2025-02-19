@@ -19,7 +19,6 @@ class mask:
             alpha_value = int(255 * transparency)
             
             b_mask = np.zeros((image.shape[0], image.shape[1], 4), np.uint8) 
-            print(masks)
             for mask in masks:
                 try:
                     if mask.shape[0]>=trash:
