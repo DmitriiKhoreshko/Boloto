@@ -26,6 +26,3 @@ if uploaded_file is not None:
     im_pil = Image.fromarray(ready_image)
     st.image(im_pil, caption="Обработанное изображение", use_container_width=True) 
     st.image(mask1, caption="Обработанное изображение", use_container_width=True)
-    df=pd.DataFrame(contour)
-    st.dataframe(df)
-    
