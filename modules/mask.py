@@ -27,7 +27,6 @@ class mask:
                         contour = mask
                         
                         contour = contour.astype(int)
-                        abc=contour
                         contour = contour.reshape(-1, 1, 2)
                         
                         b_mask = cv2.fillPoly(b_mask, [contour], (0, 255, 0))  
@@ -41,4 +40,4 @@ class mask:
  
             b_mask_rgb = b_mask[:, :, :3]
             isolated = cv2.addWeighted(image, 1, b_mask_rgb, transparency, 0)
-            return isolated, b_mask_rgb, abc  
+            return isolated, b_mask_rgb, contour  
