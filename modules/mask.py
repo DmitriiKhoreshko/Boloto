@@ -38,6 +38,8 @@ class mask:
                         continue
                 except:
                     pass
+
+            b_mask=temp
             alpha_channel = b_mask[:, :, 3] 
             alpha_channel[alpha_channel > 0] = alpha_value 
             alpha_channel[alpha_channel == 0] = 0
