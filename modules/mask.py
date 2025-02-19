@@ -22,7 +22,7 @@ class mask:
 
             # for mask in masks:
             try:
-                mask=masks[5]
+                mask=masks[6]
                 contour = mask
 
                 # if mask.shape[0]>=trash:
