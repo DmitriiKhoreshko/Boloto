@@ -20,24 +20,25 @@ class mask:
             
             b_mask = np.zeros((image.shape[0], image.shape[1], 4), np.uint8) 
 
-            for mask in masks:
-                try:
-                    contour = mask
+            # for mask in masks:
+            try:
+                mask=masks[5]
+                contour = mask
 
-                    if mask.shape[0]>=trash:
-                        
-                        temp = np.zeros((image.shape[0], image.shape[1], 4), np.uint8) 
-                        
-                        contour = contour.astype(np.int32)
-                        
-                        contour = contour.reshape(-1, 1, 2)
-                        
-                        b_mask =cv2.bitwise_or(b_mask, cv2.fillPoly(temp, [contour], (0, 255, 0)))
-                        
-                    else:
-                        continue
-                except:
-                    pass
+                if mask.shape[0]>=trash:
+                    
+                    temp = np.zeros((image.shape[0], image.shape[1], 4), np.uint8) 
+                    
+                    contour = contour.astype(np.int32)
+                    
+                    contour = contour.reshape(-1, 1, 2)
+                    
+                    b_mask =cv2.bitwise_or(b_mask, cv2.fillPoly(temp, [contour], (0, 255, 0)))
+                    
+                else:
+                    continue
+            except:
+                pass
 
             b_mask=temp
             alpha_channel = b_mask[:, :, 3] 
