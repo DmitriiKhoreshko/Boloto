@@ -19,7 +19,7 @@ class mask:
             alpha_value = int(255 * transparency)
             
             b_mask = np.zeros((image.shape[0], image.shape[1], 4), np.uint8) 
-
+            print(masks)
             for mask in masks:
                 try:
                     contour = mask
@@ -29,8 +29,6 @@ class mask:
                         contour = contour.astype(np.int32)
                         
                         contour = contour.reshape(-1, 1, 2)
-                        print(contour)
-                        print("Новый")
                         b_mask = cv2.fillPoly(b_mask, [contour], (0, 255, 0))  
                     else:
                         continue
