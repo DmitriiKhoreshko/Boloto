@@ -33,13 +33,13 @@ if uploaded_file is not None:
 
     def download_file():  
     # Читаем файл и возвращаем байты  
-    with open(csv_file, "rb") as file:  
-        btn = st.download_button(  
-            label="Скачать файл CSV",  
-            data=file,  
-            file_name=csv_file,  
-            mime='text/csv'  
-        )  
+        with open(csv_file, "rb") as file:  
+            btn = st.download_button(  
+                label="Скачать файл CSV",  
+                data=file,  
+                file_name=csv_file,  
+                mime='text/csv'  
+            )  
     
     # Вызываем функцию для скачивания файла  
     download_file()  
