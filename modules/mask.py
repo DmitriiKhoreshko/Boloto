@@ -4,10 +4,6 @@ from ultralytics import YOLO
 import torch
 from PIL import Image  
 
-# image="./test_images/test.jpg"
-
-# model_path = "runs/segment/XL_Original_300_epochs/weights/best.pt"
-
 class mask:
     def get_mask(self, model_path , image, conf):
         """Получаем на выход маску"""
@@ -37,9 +33,6 @@ class mask:
                         contour = contour.reshape(-1, 1, 2)
                         
                         b_mask =cv2.bitwise_or(b_mask, cv2.fillPoly(temp, [contour], (0, 255, 0)))
-
-                        cv2.imshow("fgddfg",temp)
-                        cv2.waitKey(0)
                         
                     else:
                         continue
@@ -56,9 +49,3 @@ class mask:
     def show_image(self,image,key):
         cv2.imshow("image",image)
         cv2.waitKey(key)
-            
-# predict=mask()
-
-# mask1=predict.get_mask(model_path,image,0)
-
-# predict.show(predict.masking(mask1["mask"],mask1["image"], 0.2,100),0)
