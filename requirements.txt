@@ -1,8 +1,8 @@
-ultralytics
+ultralytics==8.3.27
 streamlit
-opencv-python-headless
-imageio[ffmpeg]
-torch 
-torchvision 
-torchaudio
-Pillow
+opencv-python-headless==4.11.0.86
+imageio==2.37.0
+torch==2.5.0+cu124 
+torchvision==0.20.0+cu124
+torchaudio==2.5.0+cu124
+pillow==10.4.0
