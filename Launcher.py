@@ -27,3 +27,4 @@ if uploaded_file is not None:
     st.image(im_pil, caption="Обработанное изображение", use_container_width=True) 
     st.image(mask1, caption="Обработанное изображение", use_container_width=True)
     st.write(contour)
+    
