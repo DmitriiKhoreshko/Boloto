@@ -27,19 +27,3 @@ if uploaded_file is not None:
     st.image(im_pil, caption="Обработанное изображение", use_container_width=True) 
     st.image(mask1, caption="Обработанное изображение", use_container_width=True)
     st.write(contour)
-    df = pd.DataFrame(contour, columns=['Column1', 'Column2'])
-    csv_file = 'array_data.csv'  
-    df.to_csv(csv_file, index=False) 
-
-    def download_file():  
-    # Читаем файл и возвращаем байты  
-        with open(csv_file, "rb") as file:  
-            btn = st.download_button(  
-                label="Скачать файл CSV",  
-                data=file,  
-                file_name=csv_file,  
-                mime='text/csv'  
-            )  
-    
-    # Вызываем функцию для скачивания файла  
-    download_file()  
