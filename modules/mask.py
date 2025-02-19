@@ -15,7 +15,7 @@ class mask:
         
         result = model.predict(image, show_boxes=False, imgsz=832, iou=1, conf=conf, max_det=100)
         
-        return result[0].masks.xy, result
+        return result[0].masks.xy
 
     def get_mask_n_masked_im(self, masks, image, transparensy,trash):  
             
@@ -30,11 +30,17 @@ class mask:
 
                     if mask.shape[0]>=trash:
                         
+                        temp = np.zeros((image.shape[0], image.shape[1], 4), np.uint8) 
+                        
                         contour = contour.astype(np.int32)
                         
                         contour = contour.reshape(-1, 1, 2)
                         
-                        b_mask = cv2.fillPoly(b_mask, [contour], (0, 255, 0))
+                        b_mask =cv2.bitwise_or(b_mask, cv2.fillPoly(temp, [contour], (0, 255, 0)))
+                        
+                        cv2.imshow("fdsdf",temp)
+                        cv2.waitKey(27)
+                        
                     else:
                         continue
                 except:
